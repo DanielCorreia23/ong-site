@@ -1,0 +1,242 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Plataforma ONG — Protótipo</title>
+  <meta name="description" content="Plataforma protótipo para ONGs — gerenciar projetos, captar recursos e engajar voluntários.">
+  <style>
+    :root{
+      --bg:#f6f7fb; --card:#ffffff; --accent:#2563eb; --muted:#6b7280; --success:#16a34a; --danger:#dc2626;
+      --gap:1rem; --container:1100px;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+      margin:0; background:var(--bg); color:#0f172a; -webkit-font-smoothing:antialiased;
+    }
+    a{color:inherit}
+
+    .container{max-width:var(--container);margin:0 auto;padding:1rem}
+    header{background:linear-gradient(90deg, rgba(37,99,235,0.06), rgba(16,185,129,0.04));padding:1rem 0}
+    .topbar{display:flex;gap:1rem;align-items:center;justify-content:space-between}
+    .brand{display:flex;align-items:center;gap:.75rem}
+    .logo{width:44px;height:44px;border-radius:8px;background:linear-gradient(135deg,var(--accent),#10b981);display:flex;align-items:center;justify-content:center;color:white;font-weight:700}
+    nav a{margin-left:.75rem;text-decoration:none;color:var(--muted)}
+    nav a[aria-current="page"]{color:var(--accent);font-weight:600}
+
+    main{padding:2rem 0}
+    .hero{display:grid;grid-template-columns:1fr 380px;gap:2rem;align-items:center}
+    .hero-card{background:var(--card);padding:1.25rem;border-radius:12px;box-shadow:0 6px 18px rgba(15,23,42,0.06)}
+    .hero h1{margin:.25rem 0 0;font-size:1.6rem}
+    .hero p{color:var(--muted);margin:0.5rem 0 1rem}
+
+    .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}
+    .project{background:var(--card);padding:1rem;border-radius:10px;border:1px solid rgba(15,23,42,0.03)}
+    .project img{width:100%;border-radius:8px;margin-bottom:.5rem;}
+    .project h3{margin:.25rem 0}
+    .project p{margin:.35rem 0;color:var(--muted)}
+    .meta{font-size:.9rem;color:var(--muted);display:flex;gap:.5rem;align-items:center}
+
+    form{display:flex;flex-direction:column;gap:.5rem}
+    label{font-size:.9rem}
+    input[type="text"],input[type="email"],textarea,select{padding:.6rem;border-radius:8px;border:1px solid rgba(15,23,42,0.08);font-size:1rem}
+    textarea{min-height:90px}
+    button{padding:.6rem .9rem;border-radius:8px;border:0;background:var(--accent);color:white;font-weight:600;cursor:pointer}
+    button.secondary{background:transparent;border:1px solid rgba(15,23,42,0.06);color:var(--muted)}
+
+    footer{padding:2rem 0;color:var(--muted);text-align:center}
+
+    @media (max-width:1000px){
+      .hero{grid-template-columns:1fr}
+      .grid{grid-template-columns:repeat(2,1fr)}
+    }
+    @media (max-width:640px){
+      .grid{grid-template-columns:1fr}
+      .topbar{flex-direction:column;align-items:flex-start}
+      .brand{width:100%;justify-content:space-between}
+    }
+
+    :focus{outline:3px solid rgba(37,99,235,0.18);outline-offset:3px}
+
+    .row{display:flex;gap:1rem;align-items:center}
+    .stack{display:flex;flex-direction:column;gap:.5rem}
+    .pill{background:#eef2ff;padding:.25rem .5rem;border-radius:999px;font-size:.8rem}
+    .muted{color:var(--muted)}
+
+    .admin{display:grid;grid-template-columns:1fr 320px;gap:1rem}
+    .metrics{display:flex;gap:.75rem}
+    .metric{background:linear-gradient(180deg, rgba(99,102,241,0.06), rgba(59,130,246,0.03));padding:.75rem;border-radius:10px}
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container topbar" role="banner">
+      <div class="brand">
+        <div class="logo" aria-hidden="true">ONG</div>
+        <div>
+          <div style="font-weight:700">Plataforma ONG</div>
+          <div class="muted" style="font-size:.85rem">Protótipo front-end — entrega da disciplina</div>
+        </div>
+      </div>
+      <nav aria-label="Navegação principal">
+        <a href="#home" aria-current="page">Início</a>
+        <a href="#projects">Projetos</a>
+        <a href="#volunteer">Voluntários</a>
+        <a href="#donate">Doar</a>
+        <a href="#admin">Admin</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container" id="home">
+    <section class="hero">
+      <div class="hero-card">
+        <h1>Conectando ONGs, doadores e voluntários</h1>
+        <p>Gerencie projetos, aceite doações simuladas e registre voluntários — tudo no frontend. Feito com foco em semântica, responsividade e acessibilidade.</p>
+      </div>
+    </section>
+
+    <section id="projects" style="margin-top:2rem">
+      <h2>Projetos</h2>
+      <p class="muted">Projetos ativos — clique para ver detalhes ou apoiar.</p>
+      <div class="grid" role="list">
+        <div class="project" role="listitem">
+          <img src="https://picsum.photos/400/200?random=1" alt="Combate à fome">
+          <h3>Combate à Fome</h3>
+          <p>Projeto de distribuição de alimentos para famílias em situação de vulnerabilidade.</p>
+          <div class="meta"><span class="pill">Alimentação</span><span>·</span><span class="muted">01/09/2025</span></div>
+        </div>
+        <div class="project" role="listitem">
+          <img src="https://picsum.photos/400/200?random=2" alt="Acolhimento e Esperança">
+          <h3>Acolhimento e Esperança</h3>
+          <p>Projeto de apoio a crianças em abrigos e famílias carentes.</p>
+          <div class="meta"><span class="pill">Social</span><span>·</span><span class="muted">05/09/2025</span></div>
+        </div>
+        <div class="project" role="listitem">
+          <img src="https://picsum.photos/400/200?random=3" alt="Voluntariado em Ação">
+          <h3>Voluntariado em Ação</h3>
+          <p>Projeto para engajar voluntários em diversas atividades sociais.</p>
+          <div class="meta"><span class="pill">Voluntariado</span><span>·</span><span class="muted">10/09/2025</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="volunteer" style="margin-top:2rem">
+      <h2>Seja voluntário</h2>
+      <p class="muted">Cadastre-se para ser notificado quando houver atividades.</p>
+      <div class="hero-card">
+        <form id="vol-form" aria-label="Formulário de voluntariado">
+          <label for="v-name">Nome completo</label>
+          <input id="v-name" type="text" required>
+
+          <label for="v-email">Email</label>
+          <input id="v-email" type="email" required>
+
+          <label for="v-skill">Habilidades / Disponibilidade</label>
+          <textarea id="v-skill" placeholder="Ex: fim de semana, logística, alfabetização"></textarea>
+
+          <div class="row">
+            <button type="submit">Quero ajudar</button>
+            <button type="button" class="secondary" id="btn-vol-clear">Limpar</button>
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <section id="donate" style="margin-top:2rem">
+      <h2>Doações</h2>
+      <p class="muted">Simulador de doação — sem integração de pagamento real.</p>
+      <div class="hero-card">
+        <form id="donate-form" aria-label="Formulário de doação">
+          <label for="d-name">Nome (opcional)</label>
+          <input id="d-name" type="text">
+
+          <label for="d-amount">Valor (R$)</label>
+          <input id="d-amount" type="text" placeholder="50" required>
+
+          <label for="d-project">Destinar para</label>
+          <select id="d-project"></select>
+
+          <div class="row">
+            <button type="submit">Doar</button>
+            <button type="button" class="secondary" id="btn-donate-clear">Limpar</button>
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <section id="admin" style="margin-top:2rem">
+      <h2>Painel Admin</h2>
+      <div class="admin">
+        <div class="metrics">
+          <div class="metric">
+            <strong>Projetos</strong>
+            <div id="metric-projects">3</div>
+          </div>
+          <div class="metric">
+            <strong>Voluntários</strong>
+            <div id="metric-vols">0</div>
+          </div>
+          <div class="metric">
+            <strong>Doações</strong>
+            <div id="metric-donations">0</div>
+          </div>
+        </div>
+        <div class="hero-card">
+          <strong>Resumo rápido</strong>
+          <p class="muted">Total de projetos, voluntários cadastrados e doações simuladas.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      Protótipo para atividade acadêmica — desenvolvido para demonstrar conceitos de front-end.
+    </div>
+  </footer>
+
+  <script>
+    // Preenche select de projetos para doação
+    const dProject = document.getElementById('d-project');
+    const projects = ["Combate à Fome","Acolhimento e Esperança","Voluntariado em Ação"];
+    projects.forEach(p => {
+      const opt = document.createElement('option');
+      opt.value = p;
+      opt.textContent = p;
+      dProject.appendChild(opt);
+    });
+
+    // Voluntários
+    const volForm = document.getElementById('vol-form');
+    const vols = [];
+    const volMetric = document.getElementById('metric-vols');
+    document.getElementById('btn-vol-clear').onclick = ()=> volForm.reset();
+    volForm.onsubmit = e=>{
+      e.preventDefault();
+      vols.push({
+        name: document.getElementById('v-name').value,
+        email: document.getElementById('v-email').value
+      });
+      volMetric.textContent = vols.length;
+      alert("Voluntário cadastrado com sucesso!");
+      volForm.reset();
+    }
+
+    // Doações
+    const donateForm = document.getElementById('donate-form');
+    let donations = 0;
+    const donationMetric = document.getElementById('metric-donations');
+    document.getElementById('btn-donate-clear').onclick = ()=> donateForm.reset();
+    donateForm.onsubmit = e=>{
+      e.preventDefault();
+      donations += parseFloat(document.getElementById('d-amount').value || 0);
+      donationMetric.textContent = donations.toFixed(2);
+      alert("Doação simulada registrada!");
+      donateForm.reset();
+    }
+  </script>
+</body>
+</html>
